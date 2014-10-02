@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Google Maps API</title>
+	<!-- =============================== -->
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA4s8fzxgl4DVuuxelEFgjPtEA_y7YCDb4&sensor=false">
+	</script>
+	<!-- =============================== -->
+
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.js"></script>
+	<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
+	<script src="/javascripts/modal.js"></script>
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+	<script>
+		var myCenter = new google.maps.LatLng(51.51387,-0.648022);
+		function initialize()
+		{
+			var mapProp =
+			{
+				center:myCenter,
+				zoom:5,
+				mapTypeId:google.maps.MapTypeId.ROADMAP
+			};
+
+			var map = new google.maps.Map(document.getElementById("googleMap")
+				,mapProp);
+
+			var marker = new google.maps.Marker({
+				position:myCenter,
+				animation:google.maps.Animation.BOUNCE
+			})
+
+			marker.setMap(map);
+		}
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+	</script>
+</head>
+<body>
+	<h2>W3 Schools</h2>
+
+<!-- 	<h3>Introduction to AngularJS</h3>
+	<div ng-app="" ng-init="firstName='John'">
+		<p>The name is <span ng-bind='firstName'></span></p>
+		<p>My first expression: {{ 5 + 5 }}</p>
+	</div> -->
+
+<!-- 	<h3>W3 Schools - Expressions: Numbers</h3>
+	<div ng-app="" ng-init="quantity=7;cost=5">
+		<p>Total in dollar (using {} ): {{ quantity * cost }}</p>
+		<p>Total in dollar (using ng-bind ): <span ng-bind="quantity * cost"></span></p>
+	</div> -->
+
+<!-- 	<h3>W3 Schools - Expressions: Strings</h3>
+	<div ng-app="" ng-init="firstName='Simon';lastName='Davison'">
+		<p>My {} name is {{ firstName + " " + lastName }}</p>
+		<p>My ng-bind name is <span ng-bind="firstName + ' ' + lastName"></span></p>
+	</div> -->
+
+<!-- 	<h3>W3 Schools - Expressions: Objects</h3>
+	<div ng-app="" ng-init="xman={firstName:'Scott',lastName:'Summers'}">
+		<p>The X-Man's {} name is {{ xman.firstName + " " + xman.lastName }}</p>
+		<p>The X-Man's ng-bind name is <span ng-bind="xman.firstName + ' ' + xman.lastName"></span></p>
+	</div> -->
+
+<!-- 	<h3>W3 Schools - Expressions: Arrays</h3>
+	<div ng-app="" ng-init="points=[1,15,19,2,40]">
+		<p>The {} points are {{ points[2] }}</p>
+		<p>The ng-points points are <span ng-bind="points[2]"></span></p>
+	</div> -->
+
+<!-- 	<h3>W3 Schools - Directives: Data Binding</h3>
+	<div ng-app="" ng-init="quantity=1;price=5">
+		Quantity: <input type="number"	ng-model="quantity">
+		Costs:    <input type="number" ng-model="price">
+		Total in dollar: {{ quantity * price }}
+	</div> -->
+
+<!-- 	<h3>W3 Schools - Directives: Repeating HTML Elements</h3>
+	<p>The ng-repeat directive repeats an HTML element</p>
+	<div ng-app="" ng-init="names=['Jani','Hege','Kai']">
+		<ul>
+			<li ng-repeat="x in names">
+				{{ x }}
+			</li>
+		</ul>
+	</div> -->
+
+<!-- 	<h3>W3 Schools - Directives: Repeating HTML Elements</h3>
+	<p>The ng-repeat directive repeats an Array</p>
+	<div ng-app="" ng-init="names=[
+		{name:'Jani', country:'Norway'},
+		{name:'Hege', country:'Sweden'},
+		{name:'Kai', country:'Denmark'}]">
+		<ul>
+			<li ng-repeat="nordic in names">
+				{{ nordic.name + ', ' + nordic.country }}
+			</li>
+		</ul>
+	</div> -->
+<!--
+	<h3>W3 Schools - Controllers: Controller examples</h3>
+	<p>First ng-controller example</p>
+	<p>Remove the ng-controller declaration and the personController function below to not have the name prepopulated.</p>
+	<div ng-app='' ng-controller='personController'>
+		First Name: <input type='text' ng-model='person.firstName'><br>
+		Last Name: <input type='text' ng-model='person.lastName'><br>
+		<br>
+		Full Name: {{person.firstName + " " + person.lastName}}
+	</div>
+
+	<script>
+	function personController($scope) {
+		$scope.person = {
+			firstName: 'Simon',
+			lastName: 'Davison'
+		};
+	}
+	</script>
+-->
+<!--
+	<h3>W3 Schools - Controllers: Controller examples</h3>
+	<p>Controller Properties: A controller can also have functions as object properties</p>
+	<div ng-app="" ng-controller="personController">
+		First Name: <input type='text' ng-model='person.firstName'><br>
+		Last Name: <input type='text' ng-model='person.lastName'><br>
+		<br>
+		Full Name: {{person.fullName()}}
+	</div>
+
+	<script>
+		function personController($scope) {
+			$scope.person = {
+				firstName: "John",
+				lastName: "Doe",
+				fullName: function() {
+					var x;
+					x = $scope.person;
+					return x.firstName + " " + x.lastName;
+				}
+			};
+		}
+	</script>
+-->
+<!--
+<h3>W3 Schools - Controllers: Controller examples</h3>
+<p>Controller Properties: A controller can also have methods</p>
+
+<div ng-app='' ng-controller='personController'>
+	First Name:	<input type='text' ng-model='person.firstName'><br>
+	Last Name: <input type='text' ng-model='person.lastName'><br>
+	<br>
+	Full Name: {{fullName()}}
+</div>
+
+<script src='./javascripts/personController.js'></script>
+ -->
+<!--
+<h3>W3 Schools - Controllers: Controller examples</h3>
+<p>Controller Properties: Another example iterating through an Array</p>
+<div ng-app='' ng-controller='namesController'>
+<ul>
+	<li ng-repeat='x in names'>
+		{{ x.name + " " + x.country }}
+	</li>
+</ul>
+</div>
+<script src='/javascripts/namesController.js'></script>
+ -->
+
+<!--
+<h3>W3 Schools - Filters: Adding Filters to Expressions</h3>
+<p>Use | to add a Filter to an Expression. Here are 'uppercase' and 'lowercase'</p>
+<div ng-app='' ng-controller='personController'>
+	<p>The first name is {{ person.firstName | uppercase }} </p>
+	<p>The last name is {{ person.lastName | lowercase }} </p>
+</div>
+
+<script src='./javascripts/personController.js'></script>
+ -->
+<!--
+<h3>W3 Schools - Filters: Adding Filters to Directives</h3>
+<p>Use | to add a Filter to a Directive. Here is 'orderBy'</p>
+
+<div ng-app='' ng-controller='namesController'>
+<ul>
+	<li ng-repeat="x in names | orderBy:'name'">
+		{{ x.name + ', ' + x.country }}
+	</li>
+</ul>
+</div>
+<script src='/javascripts/namesController.js'></script>
+ -->
+
+<!--
+<h3>W3 Schools - Filters: Adding Filters to Directives</h3>
+<p>An input filter can be added to a directive with a pipe character (|) and filter followed by a colon and a model name. The filter filter selects a subset of an array</p>
+
+<div ng-app=''ng-controller='namesController'>
+	<p><input type='text' ng-model='name'></p>
+
+	<ul>
+		<li ng-repeat="x in names | filter:name | orderBy:'country'">
+			{{ (x.name | uppercase) + ', ' + x.country }}
+		</li>
+	</ul>
+</div>
+<script src='/javascripts/namesController.js'></script>
+ -->
+<!--
+<h3>W3 Schools - HTML DOM</h3>
+<p>The 'ng-disabled' directive binds application data directly to the HTML disabled attribute. The 'ng-show' directives hides/shows an HTML element</p>
+<div ng-app=''>
+
+	<p>
+		<button ng-disabled="mySwitch">Click me!</button>
+	</p>
+	<P>
+		<input type='checkbox' ng-model='mySwitch'>Check me to disable the button
+	</P>
+	<br>
+	<p ng-show='true'>I am visible.</p>
+	<p ng-show='false'>I am not visible></p>
+</div>
+ -->
+<!--
+<h3>W3 Schools - Events: The 'ng-click' Directive</h3>
+<p>The 'ng-click' directive defines an AngularJS click event.</p>
+<div ng-app='' ng-controller='myController'>
+<button ng-click="count = count + 1">Click me!</button>
+
+<p>{{ count }}</p>
+
+</div>
+<script type="text/javascript">
+	function myController( $scope ) {
+		$scope.count = 0;
+	}
+</script>
+ -->
+<!--
+<h3>W3 Schools - Events: The 'ng-show' Directive</h3>
+<p>The ng-show directive defines the visibility of an application.</p>
+<div ng-app='' ng-controller='personController'>
+	<button ng-click='toggle()'>Toggle the 'ng-show' value</button>
+	<p ng-show='myVar'>
+		First Name: <input type='text' ng-model='person.firstName'><br>
+		Last Name: <input type='text' ng-model='person.lastName'><br>
+		<br>
+		Full Name: {{person.firstName + " " + person.lastName}}
+	</p>
+</div>
+<script src='./javascripts/personController.js'></script>
+ -->
+
+
+<!-- <h3>W3 Schools - Modules: Application Files</h3>
+<p>In this example, "myApp.js" contains an application module definition, "myCtrl.js" contains a controller</p>
+
+<div ng-app='myApp' ng-controller='myCtrl'>
+	{{ firstName + " " + lastName }}
+</div>
+
+<script src="./javascripts/myApp.js"></script>
+<script src="./javascripts/myCtrl.js"></script>
+
+
+
+
+
+</body>
+</html> -->
+
+<!-- AIzaSyA4s8fzxgl4DVuuxelEFgjPtEA_y7YCDb4 -->
